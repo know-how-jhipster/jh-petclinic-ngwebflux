@@ -15,7 +15,7 @@ volumes:
 steps:
 
   - name: code-coverage-gate
-    image: docker-registry.continuousdelivery.store/svc-builder:openjdk-11-slim
+    image: docker-registry.continuousdelivery.store/svc-builder:ibm-semeru-runtimes-open-11-jdk-focal
     pull: if-not-exists
     volumes:
       - name: m2cache
@@ -33,7 +33,7 @@ steps:
   - name: static-analysis-gate
     depends_on:
       - code-coverage-gate
-    image: docker-registry.continuousdelivery.store/svc-builder:openjdk-11-slim
+    image: docker-registry.continuousdelivery.store/svc-builder:ibm-semeru-runtimes-open-11-jdk-focal
     pull: if-not-exists
     volumes:
       - name: m2cache
@@ -77,7 +77,7 @@ volumes:
 
 steps:
   - name: publish-snapshot-jar
-    image: docker-registry.continuousdelivery.store/svc-builder:openjdk-11-slim
+    image: docker-registry.continuousdelivery.store/svc-builder:ibm-semeru-runtimes-open-11-jdk-focal
     volumes:
       - name: m2cache
         path: /root/.m2
@@ -96,7 +96,7 @@ steps:
           - "*.*.x"
 
   - name: publish-release-jar
-    image: docker-registry.continuousdelivery.store/svc-builder:openjdk-11-slim
+    image: docker-registry.continuousdelivery.store/svc-builder:ibm-semeru-runtimes-open-11-jdk-focal
     pull: if-not-exists
     volumes:
       - name: m2cache
@@ -147,7 +147,7 @@ volumes:
 
 steps:
   - name: package-jar
-    image: docker-registry.continuousdelivery.store/svc-builder:openjdk-11-slim
+    image: docker-registry.continuousdelivery.store/svc-builder:ibm-semeru-runtimes-open-11-jdk-focal
     pull: if-not-exists
     volumes:
       - name: m2cache
@@ -176,7 +176,7 @@ steps:
       registry: docker-registry.continuousdelivery.store
       force_tag: true
       build_args:
-        - BASE_IMAGE=docker-registry.continuousdelivery.store/jdk:openjdk-11-jre-slim
+        - BASE_IMAGE=docker-registry.continuousdelivery.store/jre:ibm-semeru-runtimes-open-11-jre-focal
         - BUILD_VERSION=${DRONE_COMMIT}
       tags:
         - ${DRONE_BRANCH:22}
@@ -201,7 +201,7 @@ steps:
       registry: docker-registry.continuousdelivery.store
       force_tag: true
       build_args:
-        - BASE_IMAGE=docker-registry.continuousdelivery.store/jdk:openjdk-11-jre-slim
+        - BASE_IMAGE=docker-registry.continuousdelivery.store/jre:ibm-semeru-runtimes-open-11-jre-focal
         - BUILD_VERSION=${DRONE_COMMIT}
       tags:
         - ${DRONE_TAG}
@@ -230,7 +230,7 @@ volumes:
 steps:
   - name: create-release-tag
     failure: ignore
-    image: docker-registry.continuousdelivery.store/svc-builder:openjdk-11-slim
+    image: docker-registry.continuousdelivery.store/svc-builder:ibm-semeru-runtimes-open-11-jdk-focal
     pull: if-not-exists
     volumes:
       - name: m2cache

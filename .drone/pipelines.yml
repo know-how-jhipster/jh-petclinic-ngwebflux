@@ -233,8 +233,8 @@ steps :
       SVC_CHARTS_REPOSITORY :
         from_secret : SVC_CHARTS_REPOSITORY
     commands :
-      - git clone $${SVC_CHARTS_REPOSITORY} charts && cd charts
-      - helm install ${DRONE_REPO_NAME} ./${DRONE_REPO_NAME} --values ./${DRONE_REPO_NAME}/${DRONE_DEPLOY_TO}-values.yaml --set image.tag=${DRONE_COMMIT} -n ${DRONE_DEPLOY_TO}-environment
+      - git clone $${SVC_CHARTS_REPOSITORY} charts && cd charts/${DRONE_REPO_NAME}
+      - helm install ${DRONE_REPO_NAME} ./ --values ./values.yaml --values ./${DRONE_DEPLOY_TO}-values.yaml --set image.tag=${DRONE_COMMIT} -n ${DRONE_DEPLOY_TO}-environment
 
 ---
 
@@ -258,7 +258,7 @@ steps :
       SVC_CHARTS_REPOSITORY :
         from_secret : SVC_CHARTS_REPOSITORY
     commands :
-      - git clone $${SVC_CHARTS_REPOSITORY} charts && cd charts
+      - git clone $${SVC_CHARTS_REPOSITORY} charts && cd charts/${DRONE_REPO_NAME}
       - helm uninstall ${DRONE_REPO_NAME} -n ${DRONE_DEPLOY_TO}-environment
 
 ---
@@ -284,8 +284,8 @@ steps :
       SVC_CHARTS_REPOSITORY :
         from_secret : SVC_CHARTS_REPOSITORY
     commands :
-      - git clone $${SVC_CHARTS_REPOSITORY} charts && cd charts
-      - helm install ${DRONE_REPO_NAME} ./${DRONE_REPO_NAME} --values ./${DRONE_REPO_NAME}/${DRONE_DEPLOY_TO}-values.yaml --set image.tag=${DRONE_TAG} -n ${DRONE_DEPLOY_TO}-environment
+      - git clone $${SVC_CHARTS_REPOSITORY} charts && cd charts/${DRONE_REPO_NAME}
+      - helm install ${DRONE_REPO_NAME} ./ --values ./values.yaml --values ./${DRONE_DEPLOY_TO}-values.yaml --set image.tag=${DRONE_TAG} -n ${DRONE_DEPLOY_TO}-environment
 
 ---
 
@@ -310,7 +310,7 @@ steps :
       SVC_CHARTS_REPOSITORY :
         from_secret : SVC_CHARTS_REPOSITORY
     commands :
-      - git clone $${SVC_CHARTS_REPOSITORY} charts && cd charts
+      - git clone $${SVC_CHARTS_REPOSITORY} charts && cd charts/${DRONE_REPO_NAME}
       - helm uninstall ${DRONE_REPO_NAME} -n ${DRONE_DEPLOY_TO}-environment
 
 ---

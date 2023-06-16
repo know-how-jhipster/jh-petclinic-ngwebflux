@@ -1,8 +1,14 @@
-FROM docker-registry.c2a2.com/ujar/jdk:openjdk-11-jre-slim
+ARG BASE_IMAGE
+
+FROM $BASE_IMAGE
+
+LABEL maintainer="dev@ujar.org"
 ARG BUILD_VERSION
-ENV APPLICATION_BUILD_VERSION=$BUILD_VERSION
+ENV APPLICATION_BUILD_VERSION ${BUILD_VERSION}
+
 WORKDIR /opt/app
-USER javauser
+
 COPY ./target/*.jar /opt/app/app.jar
+
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Duser.timezone=UTC -jar /opt/app/app.jar"]
 EXPOSE 8080

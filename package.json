@@ -1,5 +1,5 @@
 {
-  "name": "jh-ngwebflux-petclinic",
+  "name": "@know-how-jhipster/jh-ngwebflux-petclinic",
   "version": "23.0.0-SNAPSHOT",
   "private": true,
   "description": "Description for petclinic",

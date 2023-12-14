@@ -33,7 +33,7 @@
     "microfrontends": [],
     "nativeLanguage": "en",
     "otherModules": [],
-    "packageName": "org.ujar.jh.petclinic.ngwebflux",
+    "packageName": "dev.knowhowto.jh.petclinic.ngwebflux",
     "pages": [],
     "prodDatabaseType": "postgresql",
     "reactive": true,

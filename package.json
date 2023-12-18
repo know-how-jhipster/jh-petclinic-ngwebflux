@@ -1,6 +1,6 @@
 {
   "name": "@know-how-jhipster/jh-ngwebflux-petclinic",
-  "version": "23.0.0-SNAPSHOT",
+  "version": "24.0.0-SNAPSHOT",
   "private": true,
   "description": "Description for petclinic",
   "license": "UNLICENSED",
